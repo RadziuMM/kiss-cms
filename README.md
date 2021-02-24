@@ -4,14 +4,14 @@ KISS-CMS is a node.js library for generating cms with MYSQL DB
 
 ## Installation
 
-You need a express and mysql library.
+You need a express library.
 
 ```bash
-yarn add kiss-cms express mysql
+yarn add kiss-cms express
 ```
 or
 ```bash
-npm i kiss-cms express mysql
+npm i kiss-cms express 
 ```
 
 ## Usage
@@ -19,7 +19,7 @@ npm i kiss-cms express mysql
 ### Syntax
 ```javascript
 import express from 'express';
-import kisscms from './index.js';
+import kisscms from 'kiss-cms';
 
 const app = express();
 const port = 3000;
@@ -46,7 +46,7 @@ app.listen(port, () => {
 ### Example
 ```javascript
 import express from 'express';
-import kisscms from './index.js';
+import kisscms from 'kiss-cms';
 
 const app = express();
 const port = 8080;
