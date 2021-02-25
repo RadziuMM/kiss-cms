@@ -15,6 +15,9 @@ npm i kiss-cms express
 ```
 
 ## Usage
+### How its work?
+This package genereating a CMS at 
+`www.${youreWebSiteURL.com}/cms`
 
 ### Syntax
 ```javascript
@@ -74,13 +77,15 @@ app.listen(port, () => {
 Wanna fetch some data from db?
 Use this endpoints (ofc u need first provide youre site addres and then add endpoint after '/')
 ```bash
-/API                                     - get all records from  all tables 
-/API/table_name                 - get all records from table 
+/API    - get all records from  all tables 
+/API/table_name   - get all records from table 
 /API/table_name/number    - get ${number} record from table
 ```
 ## Usefull information
 1.login/password as default is admin/admin.You can change it directly in db.In futher(maybe tomorrow) i will add GUI to change that in CMS with hash system.
+
 2.If u looking free mysql DB i recommend JawsDB plugin on heroku.
+
 3.Yes i will change that ugly css.(if u have idea send me .pdf/.xd/figma)
 
 ## Contributing

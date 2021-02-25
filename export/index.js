@@ -16,10 +16,26 @@ const genborderplate = () => {
     </div>
     <div id="contentBox">
         <nav>
-        <button onclick="logout()">Log Out</button>
+          <button onclick="options()">Options</button>
+          <button onclick="logout()">Log Out</button> 
         </nav>
         <div id="app">
         </div>
+        <div id="options">
+          <button onclick="options()">Close</button>
+          <div class="changeUser">
+            <form action="javascript:changeUserData()">
+              <label for="fLogin" class="label">new login</label>
+              <input id="changeLogin" name="fLogin" class="login" autocomplete="off" required /><br/><br/>
+              <label for="fPass" class="label">new password</label>
+              <input id="changePass" name="fPass" class="login" type="password" autocomplete="off" required /><br/><br/>
+              <label for="fPass" class="label">new password</label>
+              <input id="changePassReapeat" name="fPass" class="login" type="password" autocomplete="off" required /><br/><br/>
+              <button >Change Login/Password</button>
+            </form>
+          </div>
+        </div>
+        <div id="overlay"></div>
     </div>
     `;
 };
@@ -264,4 +280,46 @@ const deleteRow = (arg0, arg1) => {
     .then((_res) => {
       console.log('One row has been removed');
     });
+};
+
+let isOption = false;
+const options = () => {
+  const overlay = document.getElementById('overlay');
+  const option = document.getElementById('options');
+  if (isOption) {
+    overlay.style.display = 'none';
+    option.style.display = 'none';
+    isOption = false;
+  } else {
+    overlay.style.display = 'block';
+    option.style.display = 'block';
+    isOption = true;
+  }
+};
+
+const changeUserData = () => {
+  const login0 = document.getElementById('changeLogin').value;
+  const pass0 = document.getElementById('changePass').value;
+  const pass1 = document.getElementById('changePassReapeat').value;
+  if (pass0 === pass1) {
+    const send = [login0, pass0];
+    document.getElementById('changeLogin').value = '';
+    document.getElementById('changePass').value = '';
+    document.getElementById('changePassReapeat').value = '';
+    options();
+    const request = new Request('../cms/update/user', {
+      method: 'POST',
+      body: JSON.stringify(send),
+      headers: new Headers({
+        'Content-Type': 'application/json',
+      }),
+    });
+    fetch(request)
+      .then((res) => res.json())
+      .then((_res) => {
+        alert('User data was changed!');
+      });
+  } else {
+    alert('Passwords are difrent.Try again');
+  }
 };

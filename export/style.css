@@ -56,12 +56,12 @@ nav button {
 .cmsInput {
   margin: 15px;
   margin-left: 50vw;
-  transform: translate(-50%,0);
+  transform: translate(-50%, 0);
   width: calc(fit-content + 100px);
   order: 1;
   border: 1px solid black;
   border-radius: 15px;
-  padding:15px !important;
+  padding: 15px !important;
 }
 .cmsInput h3 {
   text-transform: uppercase;
@@ -82,46 +82,77 @@ input::-webkit-file-upload-button {
 #data {
   order: 2;
 }
-ul{
+ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
-li{
+li {
   border: 1px solid black;
-  border-radius: 10px 10px 0 0 ;
+  border-radius: 10px 10px 0 0;
   width: 50vw;
   margin-left: 50vw;
-  transform: translate(-50%,0);
+  transform: translate(-50%, 0);
 }
-.buttons{
-  border-bottom:solid 1px black ;
-  border-radius: 10px 10px 0 0 ;
+.buttons {
+  border-bottom: solid 1px black;
+  border-radius: 10px 10px 0 0;
   padding: 5px;
   text-align: left;
   background-color: rgb(199, 199, 199);
 }
-.buttons button{
+.buttons button {
   text-transform: capitalize;
   margin-left: 5px;
 }
-.info{
+.info {
   padding: 20px;
   text-align: left;
 }
-.editInfo{
+.editInfo {
   border: 1px solid black;
   border-top: none;
   text-align: left;
   width: 50vw;
   margin-left: 50vw;
-  transform: translate(-50%,0);
+  transform: translate(-50%, 0);
   display: none;
 }
-.edited{
+.edited {
   padding: 10px;
 }
 .edited input {
   width: 200px;
   outline: none;
+}
+#options {
+  position: fixed;
+  background-color: #fff;
+  top: 0;
+  left: 0;
+  margin-top: 50vh;
+  margin-left: 50vw;
+  transform: translate(-50%, -50%);
+  z-index: 500;
+  width: 400px;
+  height: 400px;
+  border: solid black 1px;
+  display: none;
+}
+#options button:first-child {
+  float: right;
+  margin: 5px;
+}
+.changeUser {
+  margin-top: 50px;
+}
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(0, 0, 0);
+  opacity: 0.3;
+  display: none;
 }
