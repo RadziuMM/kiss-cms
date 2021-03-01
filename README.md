@@ -91,7 +91,7 @@ You should use sendCSS() before initCMS().Of course sendCSS() is optional and if
 Wanna fetch some data from db?
 Use this endpoints (ofc u need first provide youre site addres and then add endpoint after '/')
 ```bash
-/API                        - get all records from  all tables 
+/API                       - get all records from  all tables 
 /API/table_name           - get all records from table 
 /API/table_name/number    - get ${number} record from table
 ```
@@ -101,6 +101,8 @@ Use this endpoints (ofc u need first provide youre site addres and then add endp
 2.Yes i will change that ugly css.(if u have idea send me .pdf/.xd/figma)
 
 ## Contributing
+https://github.com/RadziuMM/kiss-cms
+
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
