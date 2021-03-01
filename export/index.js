@@ -52,6 +52,24 @@ fetch('../cms/data')
     if (_err) alert('server no respond!');
   });
 
+// get css
+
+fetch('../cms/css')
+  .then((res) => res.json())
+  .then((res) => {
+    const link = document.createElement('link');
+    link.setAttribute('rel', 'stylesheet');
+    link.setAttribute('type', 'text/css');
+    if (res !== '0') {
+      link.setAttribute('href', `../../../${res}`);
+    } else {
+      link.setAttribute('href', './style.css');
+    }
+    document.getElementsByTagName('head')[0].appendChild(link);
+  }).catch((_err) => {
+    if (_err) alert('server no respond!');
+  });
+
 // get data
 
 const getdata = () => {

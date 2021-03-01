@@ -77,8 +77,8 @@ app.listen(port, () => {
 Wanna fetch some data from db?
 Use this endpoints (ofc u need first provide youre site addres and then add endpoint after '/')
 ```bash
-/API          - get all records from  all tables 
-/API/table_name       - get all records from table 
+/API              - get all records from  all tables 
+/API/table_name         - get all records from table 
 /API/table_name/number    - get ${number} record from table
 ```
 ## Usefull information
