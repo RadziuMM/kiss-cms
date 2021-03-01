@@ -74,7 +74,7 @@ app.listen(port, () => {
 });
 ```
 ### Change CSS
-If u think(you should) my css is not best, you can wirite you're own. You need to make a .css file and import as string for eg. by fs library.
+If you think (you should) that my css is not the best, you can create your own. You need to make a .css file and import it as a string through the fs library for example.
 ```javascript
 fs.readFile('./index.css', function (err, res) {
   if (err) {
