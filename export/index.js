@@ -57,17 +57,23 @@ fetch('../cms/data')
 fetch('../cms/css')
   .then((res) => res.json())
   .then((res) => {
-    const link = document.createElement('link');
-    link.setAttribute('rel', 'stylesheet');
-    link.setAttribute('type', 'text/css');
-    if (res !== '0') {
-      link.setAttribute('href', `../../../${res}`);
+    const data = JSON.parse(JSON.stringify(res))[0];
+    const style = document.createElement('style');
+    style.type = 'text/css';
+    if (data !== '0') {
+      style.innerText = `
+      ${data}
+      `;
     } else {
-      link.setAttribute('href', './style.css');
+      style.innerText = `
+      body{
+        background-color: white;
+      }
+      `;
     }
-    document.getElementsByTagName('head')[0].appendChild(link);
+    document.getElementsByTagName('head')[0].appendChild(style);
   }).catch((_err) => {
-    if (_err) alert('server no respond!');
+    if (_err) console.log(_err);
   });
 
 // get data
