@@ -76,11 +76,13 @@ app.listen(port, () => {
 ### Change CSS
 If you think (you should) that my css is not the best, you can create your own. You need to make a .css file and import it as a string through the fs library for example.
 ```javascript
+import  fs from 'fs';
+
 fs.readFile('./index.css', function (err, res) {
   if (err) {
      return console.error(err);
   }
- css =  res.toString();
+ const css =  res.toString();
  kisscms.sendCSS(css)
 });
 ```
