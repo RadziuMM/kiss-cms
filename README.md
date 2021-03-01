@@ -40,7 +40,7 @@ const cms = [
   ..etc
 ];
 
-kisscms(cms, con, app);
+kisscms.initCMS(cms, con, app);
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
@@ -67,17 +67,29 @@ const cms = [
   ['mail',['addres','text','VARCHAR(256)'],['title','text','VARCHAR(256)'],['content','text','VARCHAR(256)']]
 ];
 
-kisscms(cms, con, app);
+kisscms.initCMS(cms, con, app);
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
 });
 ```
+### Change CSS
+If u think(you should) my css is not best, you can wirite you're own. You need to make a .css file and import as string for eg. by fs library.
+```javascript
+fs.readFile('./index.css', function (err, res) {
+  if (err) {
+     return console.error(err);
+  }
+ css =  res.toString();
+ kisscms.sendCSS(css)
+});
+```
+You should use sendCSS() before initCMS().Of course sendCSS() is optional and if you don't use it the default css will be loaded.
 ## Endpoints
 Wanna fetch some data from db?
 Use this endpoints (ofc u need first provide youre site addres and then add endpoint after '/')
 ```bash
-/API                    - get all records from  all tables 
+/API                        - get all records from  all tables 
 /API/table_name           - get all records from table 
 /API/table_name/number    - get ${number} record from table
 ```
