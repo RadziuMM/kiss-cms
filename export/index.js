@@ -450,7 +450,7 @@ const editRow = (arg0, arg1) => {
       } else {
         let text = document.getElementById(`value${element[0]}${arg1}`).innerHTML;
         if (text[4] === '-' && text[7] === '-') {
-          text = text.substring(0, 9);
+          text = text.substring(0, 10);
         }
         string += `
                 <div class="edited">
