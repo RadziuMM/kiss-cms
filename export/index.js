@@ -224,6 +224,7 @@ const getdata = () => {
       res.shift();
       try {
         document.getElementById('table').remove();
+        document.getElementById('title').remove();
       } catch (error) {
         //
       }
@@ -259,7 +260,7 @@ const getdata = () => {
         string += '<br/><br/>';
         table.innerHTML += string;
       });
-      document.getElementById('data').innerHTML += '<h2>All of your entries</h2>';
+      document.getElementById('data').innerHTML += '<h2 id="title">All of your entries</h2>';
       document.getElementById('data').appendChild(table);
     }).catch((err) => {
       // alert('server no respond!')
@@ -269,7 +270,10 @@ const getdata = () => {
 // update table
 const update = () => {
   console.log('update time!');
-  getdata();
+  setTimeout(() => {
+    console.log('now!');
+    getdata();
+  }, 5000);
 };
 //  generete html
 
