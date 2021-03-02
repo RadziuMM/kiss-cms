@@ -222,7 +222,11 @@ const getdata = () => {
     .then((res) => {
       const names = res[0];
       res.shift();
-      document.getElementById('table').remove();
+      try {
+        document.getElementById('table').remove();
+      } catch (error) {
+        //
+      }
       const table = document.createElement('ul');
       table.id = 'table';
       const dataTable = [];
