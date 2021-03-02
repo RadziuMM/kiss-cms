@@ -3,6 +3,167 @@
 /* eslint-disable no-console */
 // generate borderplate
 
+const css = `
+body {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+#loginBox {
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 25px;
+  padding-top: 40px;
+  position: absolute;
+  margin-top: 50vh;
+  margin-left: 50vw;
+  transform: translate(-50%, -100%);
+}
+#loginBox button {
+  cursor: pointer;
+}
+.label {
+  position: absolute;
+  margin-left: 10px;
+  transform: translate(0, -50%);
+  background-color: white;
+  font-size: small;
+}
+.login {
+  border-radius: 25px;
+  text-align: center;
+  height: 20px;
+  outline: none;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  text-align: right;
+  padding: 5px;
+  background-color: rgb(199, 199, 199);
+  border-bottom: 1px black solid;
+  z-index: 100;
+}
+nav button {
+  transform: translate(-50%, 0);
+}
+
+#contentBox {
+  margin-top: 50px;
+  display: none;
+}
+#app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.cmsInput {
+  margin: 15px;
+  margin-left: 50vw;
+  transform: translate(-50%, 0);
+  width: calc(fit-content + 100px);
+  order: 1;
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 15px !important;
+}
+.cmsInput h3 {
+  text-transform: uppercase;
+}
+.cmsFormInput {
+  width: 200px;
+  outline: none;
+  margin-bottom: 10px;
+}
+input::-webkit-file-upload-button {
+  outline: none;
+  width: 100px;
+  border: 1px solid black;
+  padding: 10px;
+  background-color: white;
+  cursor: pointer;
+}
+#data {
+  order: 2;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+li {
+  border: 1px solid black;
+  border-radius: 10px 10px 0 0;
+  width: 50vw;
+  margin-left: 50vw;
+  transform: translate(-50%, 0);
+}
+.buttons {
+  border-bottom: solid 1px black;
+  border-radius: 10px 10px 0 0;
+  padding: 5px;
+  text-align: left;
+  background-color: rgb(199, 199, 199);
+}
+.buttons button {
+  text-transform: capitalize;
+  margin-left: 5px;
+}
+.info {
+  padding: 20px;
+  text-align: left;
+}
+.editInfo {
+  border: 1px solid black;
+  border-top: none;
+  text-align: left;
+  width: 50vw;
+  margin-left: 50vw;
+  transform: translate(-50%, 0);
+  display: none;
+}
+.edited {
+  padding: 10px;
+}
+.edited input {
+  width: 200px;
+  outline: none;
+}
+#options {
+  position: fixed;
+  background-color: #fff;
+  top: 0;
+  left: 0;
+  margin-top: 50vh;
+  margin-left: 50vw;
+  transform: translate(-50%, -50%);
+  z-index: 500;
+  width: 400px;
+  height: 400px;
+  border: solid black 1px;
+  display: none;
+}
+#options button:first-child {
+  float: right;
+  margin: 5px;
+}
+.changeUser {
+  margin-top: 50px;
+}
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(0, 0, 0);
+  opacity: 0.3;
+  display: none;
+}
+`;
+
 const genborderplate = () => {
   document.getElementById('cms').innerHTML = `
     <div id="loginBox"  name="form">
@@ -15,27 +176,7 @@ const genborderplate = () => {
         </form>
     </div>
     <div id="contentBox">
-        <nav>
-          <button onclick="options()">Options</button>
-          <button onclick="logout()">Log Out</button> 
-        </nav>
-        <div id="app">
-        </div>
-        <div id="options">
-          <button onclick="options()">Close</button>
-          <div class="changeUser">
-            <form action="javascript:changeUserData()">
-              <label for="fLogin" class="label">new login</label>
-              <input id="changeLogin" name="fLogin" class="login" autocomplete="off" required /><br/><br/>
-              <label for="fPass" class="label">new password</label>
-              <input id="changePass" name="fPass" class="login" type="password" autocomplete="off" required /><br/><br/>
-              <label for="fPass" class="label">new password</label>
-              <input id="changePassReapeat" name="fPass" class="login" type="password" autocomplete="off" required /><br/><br/>
-              <button >Change Login/Password</button>
-            </form>
-          </div>
-        </div>
-        <div id="overlay"></div>
+      <div id="app"></div>
     </div>
     `;
 };
@@ -62,170 +203,11 @@ fetch('../cms/css')
     style.type = 'text/css';
     if (data !== '0') {
       style.innerText = `
+      ${css}
       ${data}
       `;
     } else {
-      style.innerText = `
-      body {
-        text-align: center;
-        padding: 0;
-        margin: 0;
-      }
-      #loginBox {
-        border: 1px solid black;
-        border-radius: 15px;
-        padding: 25px;
-        padding-top: 40px;
-        position: absolute;
-        margin-top: 50vh;
-        margin-left: 50vw;
-        transform: translate(-50%, -100%);
-      }
-      #loginBox button {
-        cursor: pointer;
-      }
-      .label {
-        position: absolute;
-        margin-left: 10px;
-        transform: translate(0, -50%);
-        background-color: white;
-        font-size: small;
-      }
-      .login {
-        border-radius: 25px;
-        text-align: center;
-        height: 20px;
-        outline: none;
-      }
-      
-      nav {
-        position: fixed;
-        top: 0;
-        width: 100vw;
-        text-align: right;
-        padding: 5px;
-        background-color: rgb(199, 199, 199);
-        border-bottom: 1px black solid;
-        z-index: 100;
-      }
-      nav button {
-        transform: translate(-50%, 0);
-      }
-      
-      #contentBox {
-        margin-top: 50px;
-        display: none;
-      }
-      #app {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-      .cmsInput {
-        margin: 15px;
-        margin-left: 50vw;
-        transform: translate(-50%, 0);
-        width: calc(fit-content + 100px);
-        order: 1;
-        border: 1px solid black;
-        border-radius: 15px;
-        padding: 15px !important;
-      }
-      .cmsInput h3 {
-        text-transform: uppercase;
-      }
-      .cmsFormInput {
-        width: 200px;
-        outline: none;
-        margin-bottom: 10px;
-      }
-      input::-webkit-file-upload-button {
-        outline: none;
-        width: 100px;
-        border: 1px solid black;
-        padding: 10px;
-        background-color: white;
-        cursor: pointer;
-      }
-      #data {
-        order: 2;
-      }
-      ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-      }
-      li {
-        border: 1px solid black;
-        border-radius: 10px 10px 0 0;
-        width: 50vw;
-        margin-left: 50vw;
-        transform: translate(-50%, 0);
-      }
-      .buttons {
-        border-bottom: solid 1px black;
-        border-radius: 10px 10px 0 0;
-        padding: 5px;
-        text-align: left;
-        background-color: rgb(199, 199, 199);
-      }
-      .buttons button {
-        text-transform: capitalize;
-        margin-left: 5px;
-      }
-      .info {
-        padding: 20px;
-        text-align: left;
-      }
-      .editInfo {
-        border: 1px solid black;
-        border-top: none;
-        text-align: left;
-        width: 50vw;
-        margin-left: 50vw;
-        transform: translate(-50%, 0);
-        display: none;
-      }
-      .edited {
-        padding: 10px;
-      }
-      .edited input {
-        width: 200px;
-        outline: none;
-      }
-      #options {
-        position: fixed;
-        background-color: #fff;
-        top: 0;
-        left: 0;
-        margin-top: 50vh;
-        margin-left: 50vw;
-        transform: translate(-50%, -50%);
-        z-index: 500;
-        width: 400px;
-        height: 400px;
-        border: solid black 1px;
-        display: none;
-      }
-      #options button:first-child {
-        float: right;
-        margin: 5px;
-      }
-      .changeUser {
-        margin-top: 50px;
-      }
-      #overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background-color: rgb(0, 0, 0);
-        opacity: 0.3;
-        display: none;
-      }
-      
-      `;
+      style.innerText = `${css}`;
     }
     document.getElementsByTagName('head')[0].appendChild(style);
   }).catch((_err) => {
@@ -282,8 +264,29 @@ const getdata = () => {
 //  generete html
 
 const gen = () => {
+  const structure = `
+   <nav>
+    <button onclick="options()">Options</button>
+    <button onclick="logout()">Log Out</button> 
+  </nav>
+  <div id="options">
+    <button onclick="options()">Close</button>
+    <div class="changeUser">
+      <form action="javascript:changeUserData()">
+        <label for="fLogin" class="label">new login</label>
+        <input id="changeLogin" name="fLogin" class="login" autocomplete="off" required /><br/><br/>
+        <label for="fPass" class="label">new password</label>
+        <input id="changePass" name="fPass" class="login" type="password" autocomplete="off" required /><br/><br/>
+        <label for="fPass" class="label">new password</label>
+        <input id="changePassReapeat" name="fPass" class="login" type="password" autocomplete="off" required /><br/><br/>
+        <button >Change Login/Password</button>
+      </form>
+    </div>
+  </div>
+  <div id="overlay"></div>`;
   document.getElementById('loginBox').style.display = 'none';
   document.getElementById('contentBox').style.display = 'block';
+  document.getElementById('contentBox').innerHTML += `${structure}`;
   const app = document.getElementById('app');
   cms.forEach((element) => {
     let cmsTable = '';

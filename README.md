@@ -40,7 +40,8 @@ const cms = [
   ..etc
 ];
 
-kisscms.initCMS(cms, con, app);
+kisscms.setDB(con)
+kisscms.initCMS(cms, app);
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
@@ -67,7 +68,8 @@ const cms = [
   ['mail',['addres','text','VARCHAR(256)'],['title','text','VARCHAR(256)'],['content','text','VARCHAR(256)']]
 ];
 
-kisscms.initCMS(cms, con, app);
+kisscms.setDB(con)
+kisscms.initCMS(cms, app);
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
