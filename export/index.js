@@ -451,7 +451,7 @@ const editRow = (arg0, arg1) => {
         string += `
                 <div class="edited">
                     <label for="${element[0]}" class="label">${element[0]}</label>
-                    <input id="edited${element[0]}" name="edited${element[0]}" type="${element[1]}"  autocomplete="off" value="${document.getElementById(`value${element[0]}${arg1}`)}" required />
+                    <input id="edited${element[0]}" name="edited${element[0]}" type="${element[1]}"  autocomplete="off" value="${document.getElementById(`value${element[0]}${arg1}`).value}" required />
                 </div>`;
       }
       counter0 += 1;
