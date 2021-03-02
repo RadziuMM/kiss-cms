@@ -57,10 +57,10 @@ fs.readFile('./index.css', function (err, res) {
 You should use sendCSS() before initCMS().Of course sendCSS() is optional and if you don't use it the default css will be loaded.
 ### Example
 ```javascript
-import  fs from 'fs';
 import express from 'express';
 import kisscms from 'kiss-cms';
-import path from "path";
+import path from 'path';
+import fs from 'fs';
 
 const app = express();
 const port = 8080;
@@ -94,7 +94,7 @@ app.listen(port, () => {
 ```
 ## Endpoints
 Wanna fetch some data from db?
-Use this endpoints (ofc u need first provide youre site addres and then add endpoint after '/')
+Use this endpoints (ofc u need first provide youre site addres and then add endpoint after '/')<br />
 Get all records from  all tables:
 ```bash
 /API
