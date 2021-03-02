@@ -222,7 +222,9 @@ const getdata = () => {
     .then((res) => {
       const names = res[0];
       res.shift();
+      document.getElementById('table').remove();
       const table = document.createElement('ul');
+      table.id = 'table';
       const dataTable = [];
       let counter = 0;
       res.forEach((array) => {
@@ -260,7 +262,11 @@ const getdata = () => {
       console.log(err);
     });
 };
-
+// update table
+const update = () => {
+  console.log('update time!');
+  getdata();
+};
 //  generete html
 
 const gen = () => {
@@ -345,7 +351,7 @@ const login = () => {
 const logout = () => {
   document.getElementById('loginBox').style.display = 'block';
   document.getElementById('contentBox').style.display = 'none';
-  document.getElementById('app').innerHTML = '';
+  document.getElementById('contentBox').innerHTML = '<div id ="app"></div>';
 };
 const add = (arg) => {
   const send = [];
@@ -364,6 +370,7 @@ const add = (arg) => {
     .then((res) => res.json())
     .then((_res) => {
       console.log('New insert');
+      update();
     });
 };
 let isEditing = false;
@@ -408,6 +415,7 @@ const editRow = (arg0, arg1) => {
       .then((res) => res.json())
       .then((_res) => {
         console.log('One row has been edited');
+        update();
       });
 
     isEditing = false;
@@ -462,6 +470,7 @@ const deleteRow = (arg0, arg1) => {
     .then((res) => res.json())
     .then((_res) => {
       console.log('One row has been removed');
+      update();
     });
 };
 
