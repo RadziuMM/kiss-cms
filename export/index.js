@@ -448,10 +448,16 @@ const editRow = (arg0, arg1) => {
       if (counter0 === 0) {
         //
       } else {
+        let text = document.getElementById(`value${element[0]}${arg1}`).innerHTML;
+        if (text[4] === '-' && text[7] === '-') {
+          text = text.substring(0, 9);
+        }
         string += `
                 <div class="edited">
                     <label for="${element[0]}" class="label">${element[0]}</label>
-                    <input id="edited${element[0]}" name="edited${element[0]}" type="${element[1]}"  autocomplete="off" value="${document.getElementById(`value${element[0]}${arg1}`).value}" required />
+                    <input id="edited${element[0]}" name="edited${element[0]}" type="${element[1]}"  autocomplete="off" 
+                    value="${text}" 
+                    required />
                 </div>`;
       }
       counter0 += 1;
