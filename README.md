@@ -60,14 +60,13 @@ You should use sendCSS() before initCMS().Of course sendCSS() is optional and if
 import  fs from 'fs';
 import express from 'express';
 import kisscms from 'kiss-cms';
+import path from "path";
 
 const app = express();
 const port = 8080;
 
-
-app.use(express.static('public'));
-router.get('/', (_req, res) => {
-  res.sendFile('index.html') 
+app.get('/', (_req, res) => {
+  res.sendFile('index.html', { root: path.join(process.cwd(), './public') });
 });
 
 const cms = [
@@ -76,7 +75,7 @@ const cms = [
   ['mail',['addres','text','VARCHAR(256)'],['title','text','VARCHAR(256)'],['content','text','VARCHAR(256)']]
 ];
 
-fs.readFile('./index.css', function (err, res) {
+fs.readFile('./public/CMS_styles.css', function (err, res) {
  kisscms.sendCSS( res.toString())
 });
 
@@ -96,10 +95,17 @@ app.listen(port, () => {
 ## Endpoints
 Wanna fetch some data from db?
 Use this endpoints (ofc u need first provide youre site addres and then add endpoint after '/')
+Get all records from  all tables:
 ```bash
-/API                       - get all records from  all tables 
-/API/table_name           - get all records from table 
-/API/table_name/number    - get ${number} record from table
+/API
+```
+ Get all records from table:
+```bash
+/API/table_name
+```
+Get ${number} record from table:
+```bash
+/API/table_name/number
 ```
 ## Usefull information
 1.If u looking free mysql DB i recommend JawsDB plugin on heroku.

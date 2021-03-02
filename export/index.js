@@ -1,6 +1,5 @@
 /* eslint-disable no-alert */
 /* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
 // generate borderplate
 
 const css = `
@@ -211,7 +210,7 @@ fetch('../cms/css')
     }
     document.getElementsByTagName('head')[0].appendChild(style);
   }).catch((_err) => {
-    if (_err) console.log(_err);
+    if (_err) alert(_err);
   });
 
 // get data
@@ -263,8 +262,7 @@ const getdata = () => {
       document.getElementById('data').innerHTML += '<h2 id="title">All of your entries</h2>';
       document.getElementById('data').appendChild(table);
     }).catch((err) => {
-      // alert('server no respond!')
-      console.log(err);
+      alert('server no respond!');
     });
 };
 // update table
@@ -373,7 +371,6 @@ const add = (arg) => {
   fetch(request)
     .then((res) => res.json())
     .then((_res) => {
-      console.log('New insert');
       update();
     });
 };
@@ -418,7 +415,6 @@ const editRow = (arg0, arg1) => {
     fetch(request)
       .then((res) => res.json())
       .then((_res) => {
-        console.log('One row has been edited');
         update();
       });
 
@@ -479,7 +475,6 @@ const deleteRow = (arg0, arg1) => {
   fetch(request)
     .then((res) => res.json())
     .then((_res) => {
-      console.log('One row has been removed');
       update();
     });
 };
