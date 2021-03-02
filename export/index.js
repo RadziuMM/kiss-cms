@@ -269,11 +269,7 @@ const getdata = () => {
 };
 // update table
 const update = () => {
-  console.log('update time!');
-  setTimeout(() => {
-    console.log('now!');
-    getdata();
-  }, 5000);
+  getdata();
 };
 //  generete html
 

@@ -64,6 +64,12 @@ import kisscms from 'kiss-cms';
 const app = express();
 const port = 8080;
 
+
+app.use(express.static('public'));
+router.get('/', (_req, res) => {
+  res.sendFile('./index.html') 
+});
+
 const cms = [
   ['post',['autor','text','VARCHAR(256)'],['title','text','VARCHAR(256)'],['content','text','VARCHAR(256)'],['date','date','DATE']],
   ['photo',['photography','file','BLOB'],['title','text','VARCHAR(256)']],
